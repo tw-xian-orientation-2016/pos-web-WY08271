@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cart</title>
+  <link rel="stylesheet" href="stylesheet/cart.css">
+  <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+  <section class="header">
+    <nav class="navbar navbar-static-top container">
+      <ul class="nav nav-tabs">
+        <li role="presentation"><a href="index.html">商品列表</a></li>
+        <li role="presentation" class="active"><a href="cart.html">购物车</a></li>
+        <li role="presentation"><a href="receitpList.html">购物记录</a></li>
+      </ul>
+    </nav>
+  </section>
+
+  <section class="bodyer">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>商品</th>
+          <th>单价(元)</th>
+          <th>数量</th>
+          <th>金额</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="goods"><span>可口可乐</span></td>
+          <td class="price">3.00/瓶</td>
+          <td class="count"><input class="count-input" type="text" value="1"/></td>
+          <td class="subTotal">3.00</td>
+          <td class="operation"><span class="delete">删除</span></td>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="footer">
+    <nav class="navbar navbar-default navbar-fixed-bottom container">
+        <p class="navbar-text navbar-right"><a href="receipt.html" class="navbar-link">结算</a></p>
+        <p class="navbar-text navbar-right">合计：￥<span id="priceTotal">0.00</span></p>
+        <p class="navbar-text navbar-right">已选择商品<span id="selectedCount">0</span>件</p>
+    </nav>
+  </section>
+
+</body>
+
+</html>
