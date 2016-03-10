@@ -2,7 +2,26 @@ $(document).ready(function() {
   var receiptList = JSON.parse(localStorage.getItem("receiptList"));
 
   updatePage(receiptList);
+
+  $(".info-button").click(function() {
+  var date = parseInt(this.getAttribute("data-date"));
+
+  findReceiptItem(date, receiptList);
 });
+});
+
+function findReceiptItem(date, receiptList){
+  var tempReceipt;
+
+  receiptList.forEach(function(printItem){
+    if(printItem.date === date){
+      tempReceipt = printItem;
+    }
+  });
+
+  localStorage.setItem('tempReceipt',JSON.stringify(tempReceipt));
+  window.location.href="receipt.html";
+}
 
 function updatePage(receiptList) {
   var printHTML = '';
