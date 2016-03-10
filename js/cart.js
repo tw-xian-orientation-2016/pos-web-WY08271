@@ -19,8 +19,8 @@ $(document).ready(function() {
 
 function saveReceiptList() {
   var receiptItems = JSON.parse(localStorage.getItem("receiptItems"));
+  var receiptList = JSON.parse(localStorage.getItem("receiptList"));
   var priceTotal = calculatepriceTotal(receiptItems);
-  var receiptList = [];
   var date = new Date();
   var tempReceipt = {
     date: date.toLocaleDateString(),
@@ -29,9 +29,9 @@ function saveReceiptList() {
   };
   receiptList.push(tempReceipt);
 
-  localStorage.setItem("receiptList", JSON.stringify(receiptList));
+  localStorage["receiptList"] = JSON.stringify(receiptList);
   localStorage["tempReceipt"] = JSON.stringify(tempReceipt);
-  localStorage.removeItem("receiptItems");
+  localStorage["receiptItems"] = [];
 
   window.location.href = "receipt.html";
 }
