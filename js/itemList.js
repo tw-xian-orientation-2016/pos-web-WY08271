@@ -58,7 +58,6 @@ function init() {
   var itemsHTML = addItemsHTML(allItems);
 
   appendItems(itemsHTML);
-  updateSelectCount();
 }
 
 function initAllItems() {
