@@ -30,14 +30,14 @@ function saveReceiptList() {
   });
 
   localStorage.setItem("receiptList", JSON.stringify(receiptList));
-  locatStorage.removeItem("receiptItems");
+  localStorage.removeItem("receiptItems");
 
-  window.location.href="receipt.html";
+  window.location.href = "receipt.html";
 }
 
-function calculatepriceTotal(receiptItems){
+function calculatepriceTotal(receiptItems) {
   var priceTotal = 0;
-  receiptItems.forEach(function(receiptItem){
+  receiptItems.forEach(function(receiptItem) {
     priceTotal += receiptItem.item.price * receiptItem.count;
   });
 
@@ -49,7 +49,7 @@ function deleteReceiptItem(id, receiptItems) {
     if (receiptItem.item.id === id) {
       receiptItems.splice(index - 1, 1);
       localStorage.removeItem("receiptItems");
-      localStorage.setItem('receiptItems', JSON.stringify(receiptItems))
+      localStorage.setItem('receiptItems', JSON.stringify(receiptItems));
     }
   });
 
