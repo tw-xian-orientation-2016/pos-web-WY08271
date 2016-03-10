@@ -8,7 +8,24 @@ $(document).ready(function() {
 
   findReceiptItem(date, receiptList);
 });
+
+$(".delete-button").click(function(){
+  var date = parseInt(this.getAttribute("data-date"));
+  $(this).parent().parent().parent().hide();
+
+  deleteReceiptItem(date, receiptList);
 });
+});
+
+function deleteReceiptItem(date, receiptList){
+  receiptList.forEach(function(printItem, index){
+    if(printItem.date === date){
+      receiptList.splice(index - 1, 1);
+      localStorage.removeItem("receiptList");
+      localStorage.setItem("receiptList", JSON.stringify(receiptList));
+    }
+  });
+}
 
 function findReceiptItem(date, receiptList){
   var tempReceipt;
