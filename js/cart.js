@@ -12,26 +12,35 @@ $(document).ready(function() {
     deleteReceiptItem(id, receiptItems);
   });
 
-  $(".navbar-link").click(function() {
+  $(".checkout-button").click(function() {
     saveReceiptList();
   });
 });
 
 function saveReceiptList() {
   var receiptItems = JSON.parse(localStorage.getItem("receiptItems"));
-  var selectCount = updateSelectCount(receiptItems);
-  var priceTotal = updatepriceTotal(receiptItems);
+  var priceTotal = calculatepriceTotal(receiptItems);
   var receiptList = [];
   var date = new Date();
 
   receiptList.push({
     date: date.toLocaleDateString(),
     receiptItems: receiptItems,
-    count: selectCount,
     amount: priceTotal
   });
 
-  localStorage.removeItem("receiptItems");
+  localStorage.setItem("receiptList", JSON.stringify(receiptList));
+
+  window.location.href="receipt.html";
+}
+
+function calculatepriceTotal(receiptItems){
+  var priceTotal = 0;
+  receiptItems.forEach(function(receiptItem){
+    priceTotal += receiptItem.item.price * receiptItem.count;
+  });
+
+  return priceTotal;
 }
 
 function deleteReceiptItem(id, receiptItems) {
