@@ -22,6 +22,10 @@ function replaceSelectCount(allItems, receiptItems, id) {
   });
 
   localStorage.setItem('receiptItems', JSON.stringify(receiptItems));
+  updateSelectCount();
+}
+
+function updateSelectCount(){
   var selectedCount = JSON.parse(localStorage.getItem("receiptItems")).length;
   $("#selectedCount").text(selectedCount);
 }
@@ -29,7 +33,9 @@ function replaceSelectCount(allItems, receiptItems, id) {
 function init() {
   var allItems = initAllItems();
   var itemsHTML = addItemsHTML(allItems);
+
   appendItems(itemsHTML);
+  updateSelectCount();
 }
 
 function initAllItems() {
