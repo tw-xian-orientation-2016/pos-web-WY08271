@@ -30,6 +30,7 @@ function saveReceiptList() {
   });
 
   localStorage.setItem("receiptList", JSON.stringify(receiptList));
+  locatStorage.removeItem("receiptItems");
 
   window.location.href="receipt.html";
 }
