@@ -22,8 +22,10 @@ function saveReceiptList() {
   var selectCount = updateSelectCount(receiptItems);
   var priceTotal = updatepriceTotal(receiptItems);
   var receiptList = [];
+  var date = new Date();
 
   receiptList.push({
+    date: date.toLocaleDateString(),
     receiptItems: receiptItems,
     count: selectCount,
     amount: priceTotal
