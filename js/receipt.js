@@ -1,15 +1,14 @@
 $(document).ready(function() {
-  var receiptList = JSON.parse(localStorage.getItem("receiptList"));
+  var tempReceipt = JSON.parse(localStorage.getItem("tempReceipt"));
 
-  updateReceipt(receiptList[receiptList.length - 1]);
+  updateReceipt(tempReceipt);
 });
 
-function updateReceipt(printItems) {
+function updateReceipt(tempReceipt) {
   var receiptHTML = '';
-  var time = printItems.date;
-  var amount = printItems.amount;
-  var receiptItems = printItems.receiptItems;
-
+  var time = tempReceipt.date;
+  var amount = tempReceipt.amount;
+  var receiptItems = tempReceipt.receiptItems;
 
   receiptItems.forEach(function(receiptItem) {
     receiptHTML += '<tr><td class="goods col-md-4" >' + receiptItem.item.name + '</td><td class ="price col-md-4" >' + receiptItem.item.price + '/' + receiptItem.item.unit + '</td> <td class="count col-md-4" >' + receiptItem.count + '</td><td class="subTotal col-md-4" >' + receiptItem.item.price * receiptItem.count + '</td></tr>'

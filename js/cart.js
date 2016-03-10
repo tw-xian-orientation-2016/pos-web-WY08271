@@ -22,14 +22,15 @@ function saveReceiptList() {
   var priceTotal = calculatepriceTotal(receiptItems);
   var receiptList = [];
   var date = new Date();
-
-  receiptList.push({
+  var tempReceipt = {
     date: date.toLocaleDateString(),
     receiptItems: receiptItems,
     amount: priceTotal
-  });
+  };
+  receiptList.push(tempReceipt);
 
   localStorage.setItem("receiptList", JSON.stringify(receiptList));
+  localStorage["tempReceipt"] = JSON.stringify(tempReceipt);
   localStorage.removeItem("receiptItems");
 
   window.location.href = "receipt.html";

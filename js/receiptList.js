@@ -4,13 +4,13 @@ $(document).ready(function() {
   updatePage(receiptList);
 
   $(".info-button").click(function() {
-    var date = parseInt(this.getAttribute("data-date"));
+    var date = this.getAttribute("data-date");
 
     findReceiptItem(date, receiptList);
   });
 
   $(".delete-button").click(function() {
-    var date = parseInt(this.getAttribute("data-date"));
+    var date = this.getAttribute("data-date");
     $(this).parent().parent().parent().hide();
 
     deleteReceiptItem(date, receiptList);
@@ -36,7 +36,7 @@ function findReceiptItem(date, receiptList) {
     }
   });
 
-  localStorage.setItem('tempReceipt', JSON.stringify(tempReceipt));
+  localStorage["tempReceipt"] = JSON.stringify(tempReceipt);
   window.location.href = "receipt.html";
 }
 
