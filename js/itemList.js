@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   var allItems = JSON.parse(localStorage.getItem("allItems"));
-  var receiptItems = JSON.parse(localStorage.getItem("receiptItems")) || [];
+  var receiptItems = localStorage.getItem("receiptItems") === '' ? [] : JSON.parse(localStorage.getItem("receiptItems"));
 
   init();
 
@@ -62,9 +62,9 @@ function init() {
 
 function initAllItems() {
 
-  if (localStorage.allItems == null) {
+  if (localStorage.allItems === null) {
     $.getJSON("./data.json", function(data) {
-      localStorage.setItem("allItems", JSON.stringify(data.allItems));
+      localStorage["allItems"] = JSON.stringify(data.allItems);
     });
     return JSON.parse(localStorage.getItem("allItems"));
   }
