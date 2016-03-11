@@ -21,9 +21,9 @@ function saveReceiptList() {
   var receiptItems = JSON.parse(localStorage.getItem("receiptItems"));
   var receiptList = JSON.parse(localStorage.getItem("receiptList"));
   var priceTotal = calculatepriceTotal(receiptItems);
-  var date = new Date();
+  var date = new Date().getTime();
   var tempReceipt = {
-    date: date.toLocaleDateString(),
+    date: date,
     receiptItems: receiptItems,
     amount: priceTotal
   };

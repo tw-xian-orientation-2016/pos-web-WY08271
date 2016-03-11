@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 function updateReceipt(tempReceipt) {
   var receiptHTML = '';
-  var time = tempReceipt.date;
+  var time = changeTime(tempReceipt.date);
   var amount = tempReceipt.amount;
   var receiptItems = tempReceipt.receiptItems;
 
@@ -15,6 +15,10 @@ function updateReceipt(tempReceipt) {
   });
 
   updateHTML(receiptHTML, time, amount);
+}
+
+function changeTime(time){
+  return new Date(time).toDateString();
 }
 
 function updateHTML(receiptHTML, time, amount) {
