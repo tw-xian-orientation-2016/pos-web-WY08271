@@ -15,7 +15,30 @@ $(document).ready(function() {
   $(".checkout-button").click(function() {
     saveReceiptList();
   });
+
+  $(".count-input").on("input", function() {
+    var id = parseInt(this.getAttribute("data-id"));
+    var price = parseInt(this.getAttribute("data-price"));
+    var count = parseInt($(this).val() !== '' ? $(this).val() : 1);
+
+    $(this).parent().parent().find("[class='subTotal']").text(price * count);
+
+    var receiptItems = JSON.parse(localStorage.getItem("receiptItems"));
+    receiptItems = updateReceiptItems(receiptItems, id, count);
+    localStorage["receiptItems"] = JSON.stringify(receiptItems);
+    updatepriceTotal(receiptItems);
+  });
 });
+
+function updateReceiptItems(receiptItems, id, count) {
+  receiptItems.forEach(function(receiptItem) {
+    if(receiptItem.item.id === id){
+      receiptItem.count = count;
+    }
+  });
+
+  return receiptItems;
+}
 
 function saveReceiptList() {
   var receiptItems = JSON.parse(localStorage.getItem("receiptItems"));
@@ -62,7 +85,7 @@ function updateCart(receiptItems) {
   var itemHTML = '';
   receiptItems.forEach(function(receiptItem) {
     var item = receiptItem.item;
-    itemHTML += '<tr id="' + item.id + '"><td class="goods">' + item.name + '</td><td class="price">' + item.price + '/' + item.unit + '</td><td class="count"><input class="count-input" type="text" value="1" data-id="' + item.id + '"/></td><td class="subTotal">' +
+    itemHTML += '<tr id="' + item.id + '"><td class="goods">' + item.name + '</td><td class="price">' + item.price + '/' + item.unit + '</td><td class="count"><input class="count-input" type="text" value="' + receiptItem.count + '" data-id="' + item.id + '" data-price="' + item.price + '"/></td><td class="subTotal">' +
       item.price * receiptItem.count + '</td><td><button class="btn btn-default delete-button" type="submit" data-id="' + item.id + '">删除</button></td></tr>';
   });
   $('tbody').append(itemHTML);
