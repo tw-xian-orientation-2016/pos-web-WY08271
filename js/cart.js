@@ -42,7 +42,7 @@ function updateReceiptItems(receiptItems, id, count) {
 
 function saveReceiptList() {
   var receiptItems = JSON.parse(localStorage.getItem("receiptItems"));
-  var receiptList = JSON.parse(localStorage.getItem("receiptList"));
+  var receiptList = localStorage.getItem("receiptList") === '' ? [] : JSON.parse(localStorage.getItem("receiptList"));
   var priceTotal = calculatepriceTotal(receiptItems);
   var date = new Date().getTime();
   var tempReceipt = {
