@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 function updateReceiptItems(receiptItems, id, count) {
   receiptItems.forEach(function(receiptItem) {
-    if(receiptItem.item.id === id){
+    if (receiptItem.item.id === id) {
       receiptItem.count = count;
     }
   });

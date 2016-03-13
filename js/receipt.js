@@ -17,7 +17,7 @@ function updateReceipt(tempReceipt) {
   updateHTML(receiptHTML, time, amount);
 }
 
-function changeTime(time){
+function changeTime(time) {
   return new Date(time).toDateString();
 }
 
